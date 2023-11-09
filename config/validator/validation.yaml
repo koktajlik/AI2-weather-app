@@ -1,0 +1,66 @@
+App\Entity\Measurement:
+  properties:
+    temperature:
+      - NotBlank:
+           message: 'Temperature cannot be empty.' 
+           groups: ['create', 'edit']
+      - Range:
+          groups: ['create', 'edit']
+          min: -30
+          max: 50
+          notInRangeMessage: 'Temperature should be between {{ min }}  and  {{ max }} celsius degree .'
+    wind_speed:
+      - NotBlank:
+          message: 'Wind speed cannot be empty.'
+          groups: ['create', 'edit']
+      - Range:
+          groups: [ 'create', 'edit' ]
+          min: 0
+          max: 500
+          notInRangeMessage: 'Wind speed should be between {{ min }}  and  {{ max }} km/h .'
+
+    wind_direction:
+      - NotBlank:
+          message: 'Wind direction cannot be empty.'
+          groups: ['create', 'edit']
+    datetime:
+      - NotBlank:
+          message: 'Date cannot be empty.'
+          groups: ['create', 'edit']
+    location:
+      - NotBlank:
+          message: 'Location cannot be empty.'
+          groups: ['create', 'edit']
+
+App\Entity\Location:
+  properties:
+    city:
+      - NotBlank:
+          message: 'The city field cannot be empty.'
+          groups: ['create', 'edit']
+      - Regex:
+          pattern: '/^[^0-9]*$/'
+          message: 'The city field should not contain numbers.'
+          groups: ['create', 'edit']
+    country:
+      - NotBlank:
+          message: 'Please select a country.'
+          groups: ['create', 'edit']
+    latitude:
+      - NotBlank:
+          message: 'Latitude cannot be empty.'
+          groups: ['create', 'edit']
+      - Range:
+          groups: [ 'create', 'edit' ]
+          min: -90
+          max: 90
+          notInRangeMessage: 'Latitude value should be between {{ min }}  and  {{ max }} degrees.'
+    longitude:
+      - NotBlank:
+          message: 'Longitude cannot be empty.'
+          groups: ['create', 'edit']
+      - Range:
+          groups: [ 'create', 'edit' ]
+          min: -180
+          max: 180
+          notInRangeMessage: 'Longitude value should be between {{ min }}  and  {{ max }} degrees.'
