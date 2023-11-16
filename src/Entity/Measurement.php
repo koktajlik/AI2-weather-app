@@ -71,6 +71,11 @@ class Measurement
         return $this;
     }
 
+    public function getFahrenheit(): ?string
+    {
+        return $this->getTemperature() * 9 / 5 + 32;
+    }
+
     public function getWindSpeed(): ?string
     {
         return $this->wind_speed;
